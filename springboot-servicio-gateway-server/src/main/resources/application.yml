@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: servicio-productos
+        uri: lb://servicio-productos
+#lb es LoadBalancer
+#el - es que acepta lista
+        predicates:
+          - Path=/api/productos/**
+        filters:
+          - StripPrefix=2
+#strip es segmento del predicates. Si fuese 1 se pone 1
+          
+      - id: servicio-items
+        uri: lb://servicio-items
+        predicates:
+          - Path=/api/items/**
+        filters:
+          - StripPrefix=2
+#importantísimo los espacios y saltos de línea

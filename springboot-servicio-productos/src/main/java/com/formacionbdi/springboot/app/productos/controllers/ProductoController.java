@@ -23,7 +23,18 @@ public class ProductoController {
 	
 	@GetMapping ("/ver/{id}")
 	public Producto detalle(@PathVariable Long id) {
+		
+		//lo dormimos con thread.sleep 2segundos y se lo anida con trycatch
+		/*try {
+			Thread.sleep(2000L); //L por Long
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
 		return productoService.findById(id);
+		
+		
 	}
 	
 	
